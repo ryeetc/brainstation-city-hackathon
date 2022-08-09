@@ -1,5 +1,5 @@
 // Adding the event listener for when the form is submitted
-let form = document.querySelector(".form")
+let form = document.querySelector(".search__form")
 form.addEventListener("submit", submitComment)
 
 const populateEl = document.querySelector(".populate")
