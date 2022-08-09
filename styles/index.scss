@@ -62,11 +62,11 @@ body {
 
 .populate {
     display: flex;
-
 }
 
 .weather {
     border: 2px dashed black;
+    border-radius: 32px;
 
     &__current {
         border: 1px solid green;

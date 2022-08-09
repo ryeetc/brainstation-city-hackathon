@@ -68,6 +68,7 @@ body {
 
 .weather {
   border: 2px dashed black;
+  border-radius: 32px;
 }
 .weather__current {
   border: 1px solid green;
