@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
     <title>Visit This City</title>
 </head>
 <body>
@@ -12,13 +13,48 @@
         <h1 class="header__title">Visit This City</h1>
     </header>
 
-    <section class="search">
-        <form class="form">
-            <input class="search__input" type="text" placeholder="Enter a city . . .">
-            <button type="submit" class="search__submit">Take me there!</button>
-            <button type="submit" class="lucky">Take me anywhere!</button>
-        </form>
-    </section>
+    <main class="main">
+        <section class="search">
+            <form class="search__form">
+                <input class="search__input" type="text" placeholder="Enter a city . . .">
+                <div class="search__emoji">🔍</div>
+                <div class="search__buttons">
+                    <button type="submit" class="button search__submit">Take me there!</button>
+                    <button type="submit" class="button search__lucky">Take me anywhere!</button>
+                </div>
+            </form>
+        </section>
+        
+        <section class="populate">
+            <!-- <div class="city">Toronto</div>
+            <div class="wiki">
+                <p class="wiki__info">Wiki</p>
+            </div> -->
+            <div class="weather">
+                <div class="weather__current">
+                    <span class="weather__current--temp">15C</span>
+                    <span class="weather__current--conditions">Sunny</span>
+                </div>
+                <div class="weather__forecast">
+                    <div class="weather__forecast--day">
+                        <span class="weather__forecast--temp-high">20C</span>
+                        <span class="weather__forecast--temp-low">15C</span>
+                        <span class="weather__forecast--conditions">Rainy</span>
+                    </div>
+                    <div class="weather__forecast--day">
+                        <span class="weather__forecast--temp-high">15C</span>
+                        <span class="weather__forecast--temp-low">10C</span>
+                        <span class="weather__forecast--conditions">Rainy</span>
+                    </div>
+                    <div class="weather__forecast--day">
+                        <span class="weather__forecast--temp-high">25C</span>
+                        <span class="weather__forecast--temp-low">22C</span>
+                        <span class="weather__forecast--conditions">Sunny</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     
 </body>
