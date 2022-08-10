@@ -80,14 +80,15 @@ function submitComment(e) {
                 let newsLink = result.data.articles[0].url
                 const spanTitle = document.createElement("span")
                 const spanDesc = document.createElement("p")
-                let formattedNews = newsDesc.slice(0,newsDesc.length - 14)
+                const spanLink = document.createElement("a")
+
+                let formattedNews = newsDesc.slice(0,newsDesc.length - 14) + ". . ."
                 newsCard.append(spanTitle)
                 newsCard.append(spanDesc)
+
                 spanTitle.innerText = newsTitle
                 spanDesc.innerText =formattedNews
-
-
-                
+                             
 
             })
             .catch(error => {
