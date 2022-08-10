@@ -14,13 +14,22 @@ body {
     flex-direction: column;
 }
 
+.logo {
+    width: 4rem;
+    height: 4rem;
+    margin: 2rem;
+}
+
 .header {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 2.5rem;
+    background-color: #FFF;
+    opacity: 0.9;
+    padding: 0.25rem 0.75rem;
     &__title {
         font-size: 3.5rem;
-        margin: 1rem 0 2.5rem;
-        background-color: #FFF;
-        opacity: 0.9;
-        padding: 0.25rem 0.75rem;
+        
     }
 }
 

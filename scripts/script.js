@@ -14,7 +14,6 @@ let brainArray = ["Miami", "Vancouver", "Seattle", "Washington", "Dubai", "Shang
 
 
 
-
 //This happens on submit
 function submitComment(e) {
     e.preventDefault()
@@ -81,7 +80,7 @@ function submitComment(e) {
                 const spanTitle = document.createElement("span")
                 const spanDesc = document.createElement("p")
                 
-                let formattedNews = newsDesc.slice(0,newsDesc.length - 14) + "..."
+                let formattedNews = newsDesc.slice(0,newsDesc.length - 17) + "..."
                 newsCard.append(spanTitle)
                 newsCard.append(spanDesc)
 
@@ -153,6 +152,7 @@ function submitComment(e) {
                     const weatherForecastDayOne = document.createElement("div")
                     weatherForecast.append(weatherForecastDayOne)
                     weatherForecastDayOne.classList.add("weather__forecast--day")
+                    weatherForecastDayOne.innerText = "Tomorrow: "
 
                     const weatherForecastTempOneHigh = document.createElement("span")
                     weatherForecastDayOne.append(weatherForecastTempOneHigh)
@@ -169,6 +169,7 @@ function submitComment(e) {
                     const weatherForecastDayTwo = document.createElement("div")
                     weatherForecast.append(weatherForecastDayTwo)
                     weatherForecastDayTwo.classList.add("weather__forecast--day")
+                    weatherForecastDayTwo.innerText = "48 Hours: "
 
                     const weatherForecastTempTwoHigh = document.createElement("span")
                     weatherForecastDayTwo.append(weatherForecastTempTwoHigh)
@@ -185,6 +186,7 @@ function submitComment(e) {
                     const weatherForecastDayThree = document.createElement("div")
                     weatherForecast.append(weatherForecastDayThree)
                     weatherForecastDayThree.classList.add("weather__forecast--day")
+                    weatherForecastDayThree.innerText = "72 Hours: "
 
                     const weatherForecastTempThreeHigh = document.createElement("span")
                     weatherForecastDayThree.append(weatherForecastTempThreeHigh)
@@ -339,6 +341,8 @@ function submitComment(e) {
                     const weatherForecastDayOne = document.createElement("div")
                     weatherForecast.append(weatherForecastDayOne)
                     weatherForecastDayOne.classList.add("weather__forecast--day")
+                    weatherForecastDayOne.innerText = "Tomorrow: "
+
 
                     const weatherForecastTempOneHigh = document.createElement("span")
                     weatherForecastDayOne.append(weatherForecastTempOneHigh)
@@ -355,6 +359,7 @@ function submitComment(e) {
                     const weatherForecastDayTwo = document.createElement("div")
                     weatherForecast.append(weatherForecastDayTwo)
                     weatherForecastDayTwo.classList.add("weather__forecast--day")
+                    weatherForecastDayTwo.innerText = "48 Hours: "
 
                     const weatherForecastTempTwoHigh = document.createElement("span")
                     weatherForecastDayTwo.append(weatherForecastTempTwoHigh)
@@ -371,6 +376,7 @@ function submitComment(e) {
                     const weatherForecastDayThree = document.createElement("div")
                     weatherForecast.append(weatherForecastDayThree)
                     weatherForecastDayThree.classList.add("weather__forecast--day")
+                    weatherForecastDayThree.innerText = "72 Hours: "
 
                     const weatherForecastTempThreeHigh = document.createElement("span")
                     weatherForecastDayThree.append(weatherForecastTempThreeHigh)
