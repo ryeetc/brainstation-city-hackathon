@@ -4,7 +4,7 @@ form.addEventListener("submit", submitComment)
 
 let bodyEl = document.getElementsByName("body")
 
-let newsApi = "https://newsapi.org/v2/everything?apiKey=26f164254be94981a594f850042343e7&q=toronto&searchin=title"
+let newsApi = "https://newsapi.org/v2/everything?apiKey=281fce62f2344944a5c44b727007e4b5&q=toronto&searchin=title"
 
 let flop = document.querySelector(".search__input")
 
@@ -53,7 +53,7 @@ function submitComment(e) {
         let newLocation2 = newLocation.charAt(0).toUpperCase() + newLocation.slice(1)
         let getBackgroundPic = axios.get(`https://api.unsplash.com/search/photos/?client_id=l7qR3naC2-hfuzeYwHg5TJaG-8tGOdKpDqEXC2RPdDA&query=${newLocation2}`)
         let getTitle = axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc093e3fcb1243e3bc0182334220908&q=${newLocation2}&days=3`)
-        let newsApi = axios.get(`https://newsapi.org/v2/everything?apiKey=26f164254be94981a594f850042343e7&q=${newLocation2}&searchin=title`)
+        let newsApi = axios.get(`https://newsapi.org/v2/everything?apiKey=281fce62f2344944a5c44b727007e4b5&q=${newLocation2}&searchin=title`)
     
         
        
@@ -75,13 +75,12 @@ function submitComment(e) {
 
             newsApi 
             .then (result => {
+                
                 let newsTitle = result.data.articles[0].title
                 let newsDesc = result.data.articles[0].content
-                let newsLink = result.data.articles[0].url
                 const spanTitle = document.createElement("span")
                 const spanDesc = document.createElement("p")
-                const spanLink = document.createElement("a")
-
+                
                 let formattedNews = newsDesc.slice(0,newsDesc.length - 14) + "..."
                 newsCard.append(spanTitle)
                 newsCard.append(spanDesc)
@@ -234,7 +233,6 @@ function submitComment(e) {
                     mapImageLocation
                         .then (result => {
                             const mapImage = result.data.results[0].urls.raw;
-                            console.log(result);
                             const mapEl = document.createElement("div");
                             mapEl.classList.add("map");
                             mapEl.style.backgroundImage = `url(${mapImage})`;
@@ -248,9 +246,7 @@ function submitComment(e) {
             })
 
             .catch(error => {
-                let flop = document.querySelector(".search__input")
-                flop.classList.add("error")
-                populateEl.innerHTML = ""
+            
 
             })
     } else {
@@ -260,7 +256,7 @@ function submitComment(e) {
         
         let getBackgroundPic = axios.get(`https://api.unsplash.com/search/photos/?client_id=l7qR3naC2-hfuzeYwHg5TJaG-8tGOdKpDqEXC2RPdDA&query=${newLocation2}`)
         let getTitle = axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc093e3fcb1243e3bc0182334220908&q=${newLocation2}&days=3`)
-        let newsApi = axios.get(`https://newsapi.org/v2/everything?apiKey=26f164254be94981a594f850042343e7&q=${newLocation2}&searchin=title`)
+        let newsApi = axios.get(`https://newsapi.org/v2/everything?apiKey=281fce62f2344944a5c44b727007e4b5&q=${newLocation2}&searchin=title`)
     
         
        
@@ -272,12 +268,7 @@ function submitComment(e) {
                 populateTopTitle.innerText = locationTitle
         
             })
-            .catch(error => {
-                let flop = document.querySelector(".search__input")
-                flop.classList.add("error")
-                populateEl.innerHTML = ""
-
-            })
+            
 
             newsApi 
             .then (result => {
@@ -296,12 +287,7 @@ function submitComment(e) {
                 
 
             })
-            .catch(error => {
-                let flop = document.querySelector(".search__input")
-                flop.classList.add("error")
-                populateEl.innerHTML = ""
-
-            })
+            
 
         
         getBackgroundPic
@@ -315,12 +301,7 @@ function submitComment(e) {
                
                 
             })
-            .catch(error => {
-                let flop = document.querySelector(".search__input")
-                flop.classList.add("error")
-                populateEl.innerHTML = ""
-
-            })
+        
 
 
 
@@ -438,7 +419,7 @@ function submitComment(e) {
                     mapImageLocation
                         .then (result => {
                             const mapImage = result.data.results[0].urls.raw;
-                            console.log(result);
+                    
                             const mapEl = document.createElement("div");
                             mapEl.classList.add("map");
                             mapEl.style.backgroundImage = `url(${mapImage})`;
@@ -451,12 +432,7 @@ function submitComment(e) {
 
             })
 
-            .catch(error => {
-                let flop = document.querySelector(".search__input")
-                flop.classList.add("error")
-                populateEl.innerHTML = ""
-
-            })
+           
         
     }
     
