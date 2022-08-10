@@ -2,6 +2,8 @@
 let form = document.querySelector(".search__form")
 form.addEventListener("submit", submitComment)
 
+let newsApiKey = "26f164254be94981a594f850042343e7"
+
 const populateEl = document.querySelector(".populate")
 
 
@@ -10,96 +12,116 @@ const populateEl = document.querySelector(".populate")
 function submitComment(e) {
     e.preventDefault()
     populateEl.innerHTML = ""
-    let newLocation = e.target[0].value
-    let getWeather = axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc093e3fcb1243e3bc0182334220908&q=${newLocation}&days=3`)
 
-    getWeather
-        .then (result => {
+    if (e.submitter.classList[1] === "search__submit") {
+        let newLocation = e.target[0].value
+        let getWeather = axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc093e3fcb1243e3bc0182334220908&q=${newLocation}&days=3`)
+        let newLocation2 = newLocation.charAt(0).toUpperCase() + newLocation.slice(1)
 
-            const weatherEl = document.createElement("div")
-            populateEl.append(weatherEl)
-            weatherEl.classList.add("weather")
+        getWeather
+            .then (result => {
 
-            const weatherCurrentEl = document.createElement("div")
-            weatherEl.append(weatherCurrentEl)
-            weatherCurrentEl.classList.add("weather__current")
+                if (newLocation2 !== result.data.location.name) {
+                    let flop = document.querySelector(".search__input")
+                    flop.classList.add("error")
+                    return
+                } else {
+                
 
-            const weatherCurrentTempEl = document.createElement("span")
-            weatherCurrentEl.append(weatherCurrentTempEl)
-            weatherCurrentTempEl.classList.add("weather__current--temp")
+                    const weatherEl = document.createElement("div")
+                    populateEl.append(weatherEl)
+                    weatherEl.classList.add("weather")
 
-            const weatherCurrentConditionsEl = document.createElement("span")
-            weatherCurrentEl.append(weatherCurrentConditionsEl)
-            weatherCurrentConditionsEl.classList.add("weather__current--conditions")
+                    const weatherCurrentEl = document.createElement("div")
+                    weatherEl.append(weatherCurrentEl)
+                    weatherCurrentEl.classList.add("weather__current")
 
-            const weatherForecast = document.createElement("div")
-            weatherEl.append(weatherForecast)
-            weatherForecast.classList.add("weather__forecast")
+                    const weatherCurrentTempEl = document.createElement("span")
+                    weatherCurrentEl.append(weatherCurrentTempEl)
+                    weatherCurrentTempEl.classList.add("weather__current--temp")
 
-            const weatherForecastDayOne = document.createElement("div")
-            weatherForecast.append(weatherForecastDayOne)
-            weatherForecastDayOne.classList.add("weather__forecast--day")
+                    const weatherCurrentConditionsEl = document.createElement("span")
+                    weatherCurrentEl.append(weatherCurrentConditionsEl)
+                    weatherCurrentConditionsEl.classList.add("weather__current--conditions")
 
-            const weatherForecastTempOneHigh = document.createElement("span")
-            weatherForecastDayOne.append(weatherForecastTempOneHigh)
-            weatherForecastTempOneHigh.classList.add("weather__forecast--temp-high")
+                    const weatherForecast = document.createElement("div")
+                    weatherEl.append(weatherForecast)
+                    weatherForecast.classList.add("weather__forecast")
 
-            const weatherForecastTempOneLow = document.createElement("span")
-            weatherForecastDayOne.append(weatherForecastTempOneLow)
-            weatherForecastTempOneLow.classList.add("weather__forecast--temp-low")
+                    const weatherForecastDayOne = document.createElement("div")
+                    weatherForecast.append(weatherForecastDayOne)
+                    weatherForecastDayOne.classList.add("weather__forecast--day")
 
-            const weatherForecastConditionsOne = document.createElement("span")
-            weatherForecastDayOne.append(weatherForecastConditionsOne)
-            weatherForecastConditionsOne.classList.add("weather__forecast--conditions")
+                    const weatherForecastTempOneHigh = document.createElement("span")
+                    weatherForecastDayOne.append(weatherForecastTempOneHigh)
+                    weatherForecastTempOneHigh.classList.add("weather__forecast--temp-high")
 
-            const weatherForecastDayTwo = document.createElement("div")
-            weatherForecast.append(weatherForecastDayTwo)
-            weatherForecastDayTwo.classList.add("weather__forecast--day")
+                    const weatherForecastTempOneLow = document.createElement("span")
+                    weatherForecastDayOne.append(weatherForecastTempOneLow)
+                    weatherForecastTempOneLow.classList.add("weather__forecast--temp-low")
 
-            const weatherForecastTempTwoHigh = document.createElement("span")
-            weatherForecastDayTwo.append(weatherForecastTempTwoHigh)
-            weatherForecastTempTwoHigh.classList.add("weather__forecast--temp-high")
+                    const weatherForecastConditionsOne = document.createElement("span")
+                    weatherForecastDayOne.append(weatherForecastConditionsOne)
+                    weatherForecastConditionsOne.classList.add("weather__forecast--conditions")
 
-            const weatherForecastTempTwoLow = document.createElement("span")
-            weatherForecastDayTwo.append(weatherForecastTempTwoLow)
-            weatherForecastTempTwoLow.classList.add("weather__forecast--temp-low")
+                    const weatherForecastDayTwo = document.createElement("div")
+                    weatherForecast.append(weatherForecastDayTwo)
+                    weatherForecastDayTwo.classList.add("weather__forecast--day")
 
-            const weatherForecastConditionsTwo = document.createElement("span")
-            weatherForecastDayTwo.append(weatherForecastConditionsTwo)
-            weatherForecastConditionsTwo.classList.add("weather__forecast--conditions")
+                    const weatherForecastTempTwoHigh = document.createElement("span")
+                    weatherForecastDayTwo.append(weatherForecastTempTwoHigh)
+                    weatherForecastTempTwoHigh.classList.add("weather__forecast--temp-high")
 
-            const weatherForecastDayThree = document.createElement("div")
-            weatherForecast.append(weatherForecastDayThree)
-            weatherForecastDayThree.classList.add("weather__forecast--day")
+                    const weatherForecastTempTwoLow = document.createElement("span")
+                    weatherForecastDayTwo.append(weatherForecastTempTwoLow)
+                    weatherForecastTempTwoLow.classList.add("weather__forecast--temp-low")
 
-            const weatherForecastTempThreeHigh = document.createElement("span")
-            weatherForecastDayThree.append(weatherForecastTempThreeHigh)
-            weatherForecastTempThreeHigh.classList.add("weather__forecast--temp-high")
+                    const weatherForecastConditionsTwo = document.createElement("span")
+                    weatherForecastDayTwo.append(weatherForecastConditionsTwo)
+                    weatherForecastConditionsTwo.classList.add("weather__forecast--conditions")
 
-            const weatherForecastTempThreeLow = document.createElement("span")
-            weatherForecastDayThree.append(weatherForecastTempThreeLow)
-            weatherForecastTempThreeLow.classList.add("weather__forecast--temp-low")
+                    const weatherForecastDayThree = document.createElement("div")
+                    weatherForecast.append(weatherForecastDayThree)
+                    weatherForecastDayThree.classList.add("weather__forecast--day")
 
-            const weatherForecastConditionsThree = document.createElement("span")
-            weatherForecastDayThree.append(weatherForecastConditionsThree)
-            weatherForecastConditionsThree.classList.add("weather__forecast--conditions")
+                    const weatherForecastTempThreeHigh = document.createElement("span")
+                    weatherForecastDayThree.append(weatherForecastTempThreeHigh)
+                    weatherForecastTempThreeHigh.classList.add("weather__forecast--temp-high")
 
-            console.log(result)
+                    const weatherForecastTempThreeLow = document.createElement("span")
+                    weatherForecastDayThree.append(weatherForecastTempThreeLow)
+                    weatherForecastTempThreeLow.classList.add("weather__forecast--temp-low")
 
-             weatherCurrentTempEl.innerText = result.data.current.condition.text
-             weatherCurrentConditionsEl.innerText = result.data.current.temp_c + "C"
-             weatherForecastTempOneHigh.innerText = result.data.forecast.forecastday[0].day.maxtemp_c + "C"
-             weatherForecastTempOneLow.innerText = result.data.forecast.forecastday[0].day.mintemp_c + "C"
-             weatherForecastConditionsOne.innerText = result.data.forecast.forecastday[0].day.condition.text
-             weatherForecastTempTwoHigh.innerText = result.data.forecast.forecastday[1].day.maxtemp_c + "C"
-             weatherForecastTempTwoLow.innerText = result.data.forecast.forecastday[1].day.mintemp_c + "C"
-             weatherForecastConditionsTwo.innerText = result.data.forecast.forecastday[1].day.condition.text
-             weatherForecastTempThreeHigh.innerText = result.data.forecast.forecastday[2].day.maxtemp_c + "C"
-             weatherForecastTempThreeLow.innerText = result.data.forecast.forecastday[2].day.mintemp_c + "C"
-             weatherForecastConditionsThree.innerText = result.data.forecast.forecastday[2].day.condition.text
-            
+                    const weatherForecastConditionsThree = document.createElement("span")
+                    weatherForecastDayThree.append(weatherForecastConditionsThree)
+                    weatherForecastConditionsThree.classList.add("weather__forecast--conditions")
 
-        })
+
+                    weatherCurrentTempEl.innerText = result.data.current.condition.text
+                    weatherCurrentConditionsEl.innerText = result.data.current.temp_c + "C"
+                    weatherForecastTempOneHigh.innerText = result.data.forecast.forecastday[0].day.maxtemp_c + "C"
+                    weatherForecastTempOneLow.innerText = result.data.forecast.forecastday[0].day.mintemp_c + "C"
+                    weatherForecastConditionsOne.innerText = result.data.forecast.forecastday[0].day.condition.text
+                    weatherForecastTempTwoHigh.innerText = result.data.forecast.forecastday[1].day.maxtemp_c + "C"
+                    weatherForecastTempTwoLow.innerText = result.data.forecast.forecastday[1].day.mintemp_c + "C"
+                    weatherForecastConditionsTwo.innerText = result.data.forecast.forecastday[1].day.condition.text
+                    weatherForecastTempThreeHigh.innerText = result.data.forecast.forecastday[2].day.maxtemp_c + "C"
+                    weatherForecastTempThreeLow.innerText = result.data.forecast.forecastday[2].day.mintemp_c + "C"
+                    weatherForecastConditionsThree.innerText = result.data.forecast.forecastday[2].day.condition.text
+                }
+                
+
+            })
+
+            .catch(error => {
+                let flop = document.querySelector(".search__input")
+                flop.classList.add("error")
+
+            })
+    } else {
+        
+        console.log("Nope")
+    }
     
     form.reset()
 
