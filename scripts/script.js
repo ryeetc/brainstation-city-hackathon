@@ -82,7 +82,7 @@ function submitComment(e) {
                 const spanDesc = document.createElement("p")
                 const spanLink = document.createElement("a")
 
-                let formattedNews = newsDesc.slice(0,newsDesc.length - 14) + ". . ."
+                let formattedNews = newsDesc.slice(0,newsDesc.length - 14) + "..."
                 newsCard.append(spanTitle)
                 newsCard.append(spanDesc)
 
