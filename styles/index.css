@@ -6,7 +6,7 @@
 
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: linen;
+  background-color: lightsteelblue;
   padding: 1rem;
 }
 
@@ -14,7 +14,6 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 
 .header__title {
@@ -23,10 +22,10 @@ body {
 }
 
 .main {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 75vh;
 }
 
 .search {
@@ -34,7 +33,7 @@ body {
   margin-bottom: 5rem;
 }
 .search__input {
-  width: 35rem;
+  width: 85vw;
   height: 2.5rem;
   padding-left: 2.5rem;
   margin-bottom: 1.5rem;
@@ -53,6 +52,7 @@ body {
 .search__buttons {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .search .button {
   margin: 0 1rem;
@@ -60,25 +60,67 @@ body {
   height: 1.5rem;
   border: 1px black solid;
   border-radius: 32px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .populate {
   display: flex;
+  flex-direction: column;
+}
+.populate__top {
+  background-color: #FFF;
+  border: 2px solid slategray;
+  border-radius: 8px;
+  width: 48.75%;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+.populate__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.city {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .weather {
-  border: 2px dashed black;
-  border-radius: 32px;
+  background-color: #FFF;
+  border: 2px solid slategray;
+  border-radius: 8px;
+  width: 48.75%;
 }
 .weather__current {
-  border: 1px solid green;
-  padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-around;
+  padding: 2.5rem 1rem;
+  font-size: 1.5rem;
 }
 .weather__forecast {
   display: flex;
   justify-content: space-evenly;
 }
 .weather__forecast--day {
-  border: 2px dotted red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
   padding: 0.5rem 0;
+  font-size: 0.625rem;
+  width: 30%;
+}
+.weather__temps {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flights {
+  background-color: #FFF;
+  border: 2px solid slategray;
+  border-radius: 8px;
+  width: 48.75%;
 }/*# sourceMappingURL=index.css.map */
