@@ -44,8 +44,8 @@ body {
 .search__input:focus {
   outline: 2px slategray solid;
 }
-.search__input--error {
-  outline: 2px red;
+.search .error {
+  outline: 2px red solid;
 }
 .search__emoji {
   position: absolute;
