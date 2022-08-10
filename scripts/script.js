@@ -6,12 +6,13 @@ let newsApiKey = "26f164254be94981a594f850042343e7"
 
 const populateEl = document.querySelector(".populate")
 
-
+const populateBotEl = document.createElement("div");
+populateBotEl.classList.add("populate__bottom");
+populateEl.appendChild(populateBotEl);
 
 //This happens on submit
 function submitComment(e) {
     e.preventDefault()
-    populateEl.innerHTML = ""
 
     if (e.submitter.classList[1] === "search__submit") {
         let newLocation = e.target[0].value
@@ -26,10 +27,9 @@ function submitComment(e) {
                     flop.classList.add("error")
                     return
                 } else {
-                
 
                     const weatherEl = document.createElement("div")
-                    populateEl.append(weatherEl)
+                    populateBotEl.append(weatherEl)
                     weatherEl.classList.add("weather")
 
                     const weatherCurrentEl = document.createElement("div")
@@ -108,6 +108,21 @@ function submitComment(e) {
                     weatherForecastTempThreeHigh.innerText = result.data.forecast.forecastday[2].day.maxtemp_c + "C"
                     weatherForecastTempThreeLow.innerText = result.data.forecast.forecastday[2].day.mintemp_c + "C"
                     weatherForecastConditionsThree.innerText = result.data.forecast.forecastday[2].day.condition.text
+
+                    const mapImageLocation = axios.get(`https://api.unsplash.com/search/photos/?client_id=l7qR3naC2-hfuzeYwHg5TJaG-8tGOdKpDqEXC2RPdDA&query=${newLocation2}%20map`)
+                    console.log(mapImageLocation);  
+                    
+                    mapImageLocation
+                        .then (result => {
+                            const mapImage = result.data.results[0].urls.raw;
+                            console.log(result);
+                            const mapEl = document.createElement("div");
+                            mapEl.classList.add("map");
+                            mapEl.style.backgroundImage = `url(${mapImage})`;
+                            mapEl.style.backgroundSize = "cover";
+                            mapEl.style.backgroundPosition = "center";
+                            populateBotEl.appendChild(mapEl);
+                        })
                 }
                 
 
