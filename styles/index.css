@@ -19,6 +19,9 @@ body {
 .header__title {
   font-size: 3.5rem;
   margin: 1rem 0 2.5rem;
+  background-color: #FFF;
+  opacity: 0.9;
+  padding: 0.25rem 0.75rem;
 }
 
 .main {
@@ -31,6 +34,8 @@ body {
 .search {
   position: relative;
   margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
 }
 .search__input {
   width: 85vw;
@@ -96,24 +101,49 @@ body {
   width: 48.75%;
 }
 .weather__current {
+  position: relative;
   display: flex;
   justify-content: space-around;
   padding: 2.5rem 1rem;
   font-size: 1.5rem;
+}
+.weather__label {
+  font-size: 0.75rem;
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  top: 1rem;
+  right: 5rem;
+  background-color: #FFF;
+  opacity: 0.9;
+  padding: 0.0625rem;
+}
+.weather__label:nth-child(1) {
+  left: inherit;
+  left: 4rem;
+}
+.weather__current--temp, .weather__current--conditions {
+  background-color: #FFF;
+  opacity: 0.9;
+  padding: 0.125rem;
 }
 .weather__forecast {
   display: flex;
   justify-content: space-evenly;
 }
 .weather__forecast--day {
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 5rem;
   padding: 0.5rem 0;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   width: 30%;
+  background-color: lightskyblue;
+  opacity: 0.6;
 }
 .weather__temps {
   width: 100%;
