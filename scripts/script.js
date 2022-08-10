@@ -2,22 +2,86 @@
 let form = document.querySelector(".search__form")
 form.addEventListener("submit", submitComment)
 
-let newsApiKey = "26f164254be94981a594f850042343e7"
+let bodyEl = document.getElementsByName("body")
 
-const populateEl = document.querySelector(".populate")
+let newsApi = "https://newsapi.org/v2/everything?apiKey=26f164254be94981a594f850042343e7&q=toronto&searchin=title"
 
-const populateBotEl = document.createElement("div");
-populateBotEl.classList.add("populate__bottom");
-populateEl.appendChild(populateBotEl);
+
+
+
 
 //This happens on submit
 function submitComment(e) {
     e.preventDefault()
+    
+    const populateEl = document.querySelector(".populate")
+    
+    const populateBotEl = document.createElement("div");
+    populateBotEl.classList.add("populate__bottom");
+    populateEl.appendChild(populateBotEl);
+
+    populateEl.innerHTML = ""
+
+    const populateTopEl = document.createElement("populate__top")
+    populateEl.append(populateTopEl)
+
+    const newsCard = document.createElement("div")
+    populateTopEl.append(newsCard)
+
+
+    populateEl.append(populateTopEl)
+
 
     if (e.submitter.classList[1] === "search__submit") {
         let newLocation = e.target[0].value
         let getWeather = axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc093e3fcb1243e3bc0182334220908&q=${newLocation}&days=3`)
         let newLocation2 = newLocation.charAt(0).toUpperCase() + newLocation.slice(1)
+        let getBackgroundPic = axios.get(`https://api.unsplash.com/search/photos/?client_id=l7qR3naC2-hfuzeYwHg5TJaG-8tGOdKpDqEXC2RPdDA&query=${newLocation2}%20city`)
+        let getTitle = axios.get(`http://api.weatherapi.com/v1/forecast.json?key=bc093e3fcb1243e3bc0182334220908&q=${newLocation2}&days=3`)
+        let newsApi = axios.get(`https://newsapi.org/v2/everything?apiKey=26f164254be94981a594f850042343e7&q=${newLocation2}&searchin=title`)
+
+        newsApi 
+            .then (result => {
+                let newsTitle = result.data.articles[0].title
+                let newsDesc = result.data.articles[0].description
+
+                const spanTitle = document.createElement("span")
+                const spanDesc = document.createElement("p")
+                newsCard.append(spanTitle)
+                newsCard.append(spanDesc)
+                spanTitle.innerText = newsTitle
+                spanDesc.innerText =newsDesc
+
+
+                
+
+            })
+
+        getTitle
+            .then(result =>{
+                let locationTitle = result.data.location.name
+                populateTopEl.append(locationTitle)
+            })
+
+        
+        getBackgroundPic
+            .then(result => {
+                let backgroundPic =result.data.results[0].urls.raw
+                document.body.style.backgroundImage = `url(${backgroundPic})`
+                document.body.style.backgroundSize = "cover"
+                document.body.style.backgroundPosition = "center"
+                console.log(result)
+                
+               
+                
+            })
+            .catch (error => {
+                return
+            }
+            )
+
+
+        console.log
 
         getWeather
             .then (result => {
